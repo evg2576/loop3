@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace LoopTasks
 {
@@ -9,10 +9,14 @@ namespace LoopTasks
         /// </summary>
         public static int SumOfOddDigits(int n)
         {
-            //this method should return the sum of the odd digits of n.
-            // TODO: delete code line below, write down your solution 
-
-            throw new NotImplementedException();
+            int[] result = n.ToString().Select(o => Convert.ToInt32(o) - 48).ToArray();
+            int sum = 0;
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (result[i] % 2 != 0)
+                    sum += result[i];
+            }
+            return sum;
         }
 
         /// <summary>
@@ -20,10 +24,13 @@ namespace LoopTasks
         /// </summary>
         public static int NumberOfUnitsInBinaryRecord(int n)
         {
-            //this method should return the number of units in the binary notation of n.
-            // TODO: delete code line below, write down your solution 
-
-            throw new NotImplementedException();
+            int count = 0;
+            while (n != 0)
+            {
+                n = n & (n - 1);
+                count++;
+            }
+            return count;   
         }
 
         /// <summary>
@@ -31,10 +38,20 @@ namespace LoopTasks
         /// </summary>
         public static int SumOfFirstNFibonacciNumbers(int n)
         {
-            //this method should return the sum of the first n Fibonacci numbers.
-            // TODO: delete code line below, write down your solution 
-
-            throw new NotImplementedException();
+            if (n == 0) return 0;
+            if (n == 1) return 0;
+            int f1, f2, f3, i = 2, sum = 1;
+            f1 = 0;
+            f2 = 1;
+            while (i < n)
+            {
+                f3 = f1 + f2;
+                f1 = f2;
+                f2 = f3;
+                sum = sum + f3;
+                i++;
+            }
+            return sum;
         }
     }
 }
